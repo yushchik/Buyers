@@ -2,6 +2,7 @@ package com.example.buyers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.buyers.databinding.ActivityMainBinding;
@@ -16,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        
+        binding.logInButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, FirstName.class);
+            startActivity(intent);
+        });
     }
 }

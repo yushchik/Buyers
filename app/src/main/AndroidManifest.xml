@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buyers">
         <activity
+            android:name=".FirstName">
+        </activity>
+        <activity
+            android:name=".LastName">
+        </activity>
+        <activity
+            android:name=".EmailPerson">
+        </activity>
+        <activity
+            android:name=".FinalData">
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
