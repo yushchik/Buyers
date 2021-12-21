@@ -19,13 +19,14 @@ public class FirstName extends AppCompatActivity{
         setContentView(binding.getRoot());
 
         binding.btnBackFirstName.setOnClickListener(view -> {
-            Intent intentBack = new Intent(this, MainActivity.class);
-            startActivity(intentBack);
+            Intent intentBackFirstName = new Intent(this, MainActivity.class);
+            startActivity(intentBackFirstName);
         });
 
         binding.btnNextFirstName.setOnClickListener(view -> {
-            Intent intentNext = new Intent(this, LastName.class);
-            startActivity(intentNext);
+            Intent intentNextFirstName = new Intent(this, LastName.class);
+            intentNextFirstName.putExtra("FirstName", "Denis");
+            startActivity(intentNextFirstName);
         });
     }
 }

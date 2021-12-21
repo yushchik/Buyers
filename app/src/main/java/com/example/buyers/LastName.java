@@ -20,13 +20,15 @@ public class LastName extends AppCompatActivity{
         setContentView(binding.getRoot());
 
         binding.btnBackLastName.setOnClickListener(view -> {
-            Intent intentBack = new Intent(this, FirstName.class);
-            startActivity(intentBack);
+            Intent intentBackLastName = new Intent(this, FirstName.class);
+
+            startActivity(intentBackLastName);
         });
 
         binding.btnNextLastName.setOnClickListener(view -> {
-            Intent intentNext = new Intent(this, EmailPerson.class);
-            startActivity(intentNext);
+            Intent intentNextLastName = new Intent(this, EmailPerson.class);
+            intentNextLastName.putExtra("LastName", "Mirgorod");
+            startActivity(intentNextLastName);
         });
     }
 }

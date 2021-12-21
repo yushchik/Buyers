@@ -19,13 +19,14 @@ public class EmailPerson extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnBackEmail.setOnClickListener(view -> {
-            Intent intentBack = new Intent(this, LastName.class);
-            startActivity(intentBack);
+            Intent intentBackEmail = new Intent(this, LastName.class);
+            startActivity(intentBackEmail);
         });
 
         binding.btnNextEmail.setOnClickListener(view -> {
-            Intent intentNext = new Intent(this, FinalData.class);
-            startActivity(intentNext);
+            Intent intentNextEmail = new Intent(this, FinalData.class);
+            intentNextEmail.putExtra("Email", "kelwaycf@Gmail.com");
+            startActivity(intentNextEmail);
         });
     }
 }
