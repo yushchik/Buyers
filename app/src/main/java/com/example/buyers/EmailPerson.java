@@ -14,19 +14,23 @@ public class EmailPerson extends AppCompatActivity {
 
     EmailPersonBinding binding;
     public String string;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = EmailPersonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        if(savedInstanceState != null){
+            string = savedInstanceState.getString("Email");
+        }
         binding.btnBackEmail.setOnClickListener(view -> {
             Intent intentBackEmail = new Intent(this, LastName.class);
             startActivity(intentBackEmail);
         });
 
         binding.btnNextEmail.setOnClickListener(view -> {
-            string = String.valueOf(binding.editTextEmail.getText());
+            this.string = String.valueOf(binding.editTextEmail.getText());
             Intent intentNextEmail = new Intent(this, FinalData.class);
             intentNextEmail.putExtra("Email", string);
             Intent getIntentEmail = getIntent();
@@ -35,15 +39,18 @@ public class EmailPerson extends AppCompatActivity {
             startActivity(intentNextEmail);
         });
     }
-
+    // сохранение состояния
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("key_email", "string");
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+        saveInstanceState.putString("Email", string = String.valueOf(binding.editTextEmail.getText()));
     }
-
+    // получение ранее сохраненного состояния
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        String name = savedInstanceState.getString("Email");
+        binding.editTextEmail.setText(name);
     }
 }

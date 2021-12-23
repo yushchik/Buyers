@@ -18,11 +18,30 @@ public class FirstName extends AppCompatActivity{
         binding = FirstNameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        if(savedInstanceState != null){
+            string = savedInstanceState.getString("FirstName");
+        }
+
         binding.btnNextFirstName.setOnClickListener(view -> {
             string = String.valueOf(binding.editTextFirstName.getText());
             Intent intentNextFirstName = new Intent(this, LastName.class);
             intentNextFirstName.putExtra("FirstName", string);
             startActivity(intentNextFirstName);
         });
+    }
+
+    // сохранение состояния
+    @Override
+    protected void onSaveInstanceState(Bundle saveInstanceState) {
+        super.onSaveInstanceState(saveInstanceState);
+        saveInstanceState.putString("FirstName", string = String.valueOf(binding.editTextFirstName.getText()));
+    }
+    // получение ранее сохраненного состояния
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        String name = savedInstanceState.getString("FirstName");
+        binding.editTextFirstName.setText(name);
     }
 }
