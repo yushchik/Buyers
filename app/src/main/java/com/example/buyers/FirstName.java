@@ -11,21 +11,17 @@ import com.example.buyers.databinding.FirstNameBinding;
 public class FirstName extends AppCompatActivity{
 
     FirstNameBinding binding;
-
+    public String string;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = FirstNameBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnBackFirstName.setOnClickListener(view -> {
-            Intent intentBackFirstName = new Intent(this, MainActivity.class);
-            startActivity(intentBackFirstName);
-        });
-
         binding.btnNextFirstName.setOnClickListener(view -> {
+            string = String.valueOf(binding.editTextFirstName.getText());
             Intent intentNextFirstName = new Intent(this, LastName.class);
-            intentNextFirstName.putExtra("FirstName", "Denis");
+            intentNextFirstName.putExtra("FirstName", string);
             startActivity(intentNextFirstName);
         });
     }

@@ -12,7 +12,7 @@ import com.example.buyers.databinding.LastNameBinding;
 public class LastName extends AppCompatActivity{
 
     LastNameBinding binding;
-
+    public String string;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,13 +21,15 @@ public class LastName extends AppCompatActivity{
 
         binding.btnBackLastName.setOnClickListener(view -> {
             Intent intentBackLastName = new Intent(this, FirstName.class);
-
             startActivity(intentBackLastName);
         });
 
         binding.btnNextLastName.setOnClickListener(view -> {
+            string = String.valueOf(binding.editTextLastName.getText());
             Intent intentNextLastName = new Intent(this, EmailPerson.class);
-            intentNextLastName.putExtra("LastName", "Mirgorod");
+            intentNextLastName.putExtra("LastName", string);
+            Intent getFirstName = getIntent();
+            intentNextLastName.putExtra("FirstName", getFirstName.getStringExtra("FirstName"));
             startActivity(intentNextLastName);
         });
     }

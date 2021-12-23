@@ -32,5 +32,14 @@ public class FinalData extends AppCompatActivity{
             Intent intentConfirm = new Intent(this, MainActivity.class);
             startActivity(intentConfirm);
         });
+
+        binding.textViewEmail.setOnClickListener(view -> {
+            Intent intent2 = new Intent(Intent.ACTION_SEND);
+            intent2.setType("plain/text");
+            intent2.putExtra(Intent.EXTRA_EMAIL, new String[] { "your@email.com" });
+            intent2.putExtra(Intent.EXTRA_SUBJECT, "YOUR SUBJECT");
+            intent2.putExtra(Intent.EXTRA_TEXT, "YOUR MAIL BODY");
+            startActivity(Intent.createChooser(intent2, ""));
+        });
     }
 }
